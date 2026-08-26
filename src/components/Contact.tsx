@@ -1,13 +1,18 @@
 "use client";
 
+import { useRef } from "react";
 import { motion } from "framer-motion";
 import { Phone, MapPin } from "lucide-react";
 import { business } from "@/data/business";
+import { CursorGlow } from "./CursorGlow";
 
 export function Contact() {
+  const sectionRef = useRef<HTMLElement>(null);
+
   return (
-    <section id="contact" className="relative overflow-hidden bg-surface py-24 sm:py-32">
+    <section ref={sectionRef} id="contact" className="relative overflow-hidden bg-surface py-24 sm:py-32">
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[400px] bg-gradient-to-t from-green-500/10 to-transparent" />
+      <CursorGlow containerRef={sectionRef} />
 
       <div className="relative mx-auto max-w-4xl px-6 text-center">
         <motion.div
@@ -21,7 +26,7 @@ export function Contact() {
             Let&apos;s build your yard.
           </h2>
           <p className="mx-auto mt-4 max-w-md font-[family-name:var(--font-body)] text-mist">
-            Free estimates. No middlemen — you talk directly to Gilberto and Manuel,
+            Free estimates. No middlemen, you talk directly to Gilberto and Manuel,
             start to finish.
           </p>
 

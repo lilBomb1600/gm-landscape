@@ -32,7 +32,7 @@ export const reviews = {
   count: 1,
   quotes: [
     {
-      text: "Five years ago the hill behind our house was falling into our backyard which was covered with weeds. G&M Landscaping put in three beautiful retaining walls, two patios, walkways and a new driveway all made of pavers. Now, five years later, there has been no movement, zero sinking pavers, the retaining walls are doing their job, and the driveway is pristine. G&M also put in outdoor lighting, a small waterfall, gopherwire, new trees and new plants. It was beautiful then, and is still beautiful now! Yesterday, we received a letter from our Home Owner's Association complimenting us on our yard! Our thanks go to Gilberto and Manuel (G&M) and their team.",
+      text: "Five years ago the hill behind our house was falling into our backyard, covered in weeds. G&M put in three retaining walls, two patios, walkways, a new paver driveway, outdoor lighting, and a small waterfall. Five years later: zero movement, zero sinking pavers, and our HOA sent us a letter complimenting our yard.",
       author: "Carol K.",
       location: "Concord, CA",
       date: "Mar 2025",

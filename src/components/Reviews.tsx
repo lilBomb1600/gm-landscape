@@ -1,13 +1,17 @@
 "use client";
 
+import { useRef } from "react";
 import { motion } from "framer-motion";
 import { Quote, Star } from "lucide-react";
 import { business, reviews } from "@/data/business";
+import { CursorGlow } from "./CursorGlow";
 
 export function Reviews() {
+  const sectionRef = useRef<HTMLElement>(null);
+
   return (
-    <section id="reviews" className="relative overflow-hidden bg-ink py-24 sm:py-32">
-      <div className="pointer-events-none absolute left-1/2 top-0 h-[500px] w-[900px] -translate-x-1/2 rounded-full bg-green-500/10 blur-[120px]" />
+    <section ref={sectionRef} id="reviews" className="relative overflow-hidden bg-ink py-24 sm:py-32">
+      <CursorGlow containerRef={sectionRef} />
 
       <div className="relative mx-auto max-w-4xl px-6">
         <motion.div
@@ -21,7 +25,7 @@ export function Reviews() {
             {business.about}
           </p>
           <p className="mt-3 font-[family-name:var(--font-display)] text-sm font-semibold text-cream">
-            — Gilberto &amp; Manuel, owners
+            Gilberto &amp; Manuel, owners
           </p>
         </motion.div>
 

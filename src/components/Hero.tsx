@@ -1,20 +1,21 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, Star } from "lucide-react";
 import { business } from "@/data/business";
 import { FloatingParticles } from "./FloatingParticles";
 
 export function Hero() {
   const ref = useRef<HTMLElement>(null);
+  const reduce = useReducedMotion();
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
-  const bgScale = useTransform(scrollYProgress, [0, 1], [1.1, 1.28]);
-  const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "18%"]);
-  const fade = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+  const bgScale = useTransform(scrollYProgress, [0, 1], reduce ? [1.1, 1.1] : [1.1, 1.28]);
+  const bgY = useTransform(scrollYProgress, [0, 1], reduce ? ["0%", "0%"] : ["0%", "18%"]);
+  const fade = useTransform(scrollYProgress, [0, 0.8], reduce ? [1, 1] : [1, 0]);
 
   return (
-    <section ref={ref} id="top" className="relative h-screen min-h-[720px] w-full overflow-hidden bg-ink">
+    <section ref={ref} id="top" className="relative min-h-[100dvh] w-full overflow-hidden bg-ink">
       <motion.div
         className="absolute inset-0 bg-cover bg-center"
         style={{ backgroundImage: "url(/images/hero-checkerboard-fountain.jpg)", scale: bgScale, y: bgY }}
@@ -37,8 +38,8 @@ export function Hero() {
                 <Star key={i} size={12} fill="currentColor" strokeWidth={0} />
               ))}
             </div>
-            <span className="font-[family-name:var(--font-data)] text-xs text-mist">
-              {business.rating.toFixed(1)} on Yelp · 30 years in business
+            <span className="whitespace-nowrap font-[family-name:var(--font-data)] text-[11px] text-mist sm:text-xs">
+              {business.rating.toFixed(1)} on Yelp · 30 years
             </span>
           </motion.div>
 
@@ -57,8 +58,8 @@ export function Hero() {
             transition={{ duration: 0.7, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
             className="mt-5 max-w-xl font-[family-name:var(--font-body)] text-lg text-mist"
           >
-            {business.tagline} Gilberto and Manuel handle every project themselves —
-            from the first quote to the last paver.
+            No middlemen. Gilberto and Manuel handle every project themselves, from
+            the first quote to the last paver.
           </motion.p>
 
           <motion.div

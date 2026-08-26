@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { gallery } from "@/data/business";
+import { TiltCard } from "./TiltCard";
 
 const spans = [
   "sm:col-span-2 sm:row-span-2",
@@ -36,16 +37,17 @@ export function Gallery() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ type: "spring", stiffness: 150, damping: 18, delay: (i % 4) * 0.06 }}
-              whileHover={{ scale: 1.02 }}
-              className={`group relative overflow-hidden rounded-2xl ${spans[i % spans.length]}`}
+              className={spans[i % spans.length]}
             >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={g.src}
-                alt={g.alt}
-                className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+              <TiltCard maxTilt={6} className="group relative block h-full w-full overflow-hidden rounded-2xl">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={g.src}
+                  alt={g.alt}
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+              </TiltCard>
             </motion.div>
           ))}
         </div>
