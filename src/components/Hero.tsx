@@ -15,7 +15,11 @@ export function Hero() {
   const fade = useTransform(scrollYProgress, [0, 0.8], reduce ? [1, 1] : [1, 0]);
 
   return (
-    <section ref={ref} id="top" className="relative min-h-[100dvh] w-full overflow-hidden bg-ink">
+    <section
+      ref={ref}
+      id="top"
+      className="relative flex min-h-[100dvh] w-full flex-col justify-end overflow-hidden bg-ink"
+    >
       <motion.div
         className="absolute inset-0 bg-cover bg-center"
         style={{ backgroundImage: "url(/images/hero-checkerboard-fountain.jpg)", scale: bgScale, y: bgY }}
@@ -25,7 +29,7 @@ export function Hero() {
 
       <FloatingParticles count={16} />
 
-      <motion.div style={{ opacity: fade }} className="relative z-10 flex h-full items-end px-6 pb-24 sm:pb-28">
+      <motion.div style={{ opacity: fade }} className="relative z-10 px-6 pb-24 sm:pb-28">
         <div className="mx-auto w-full max-w-5xl">
           <motion.div
             initial={{ opacity: 0, y: 20, scale: 0.96 }}
