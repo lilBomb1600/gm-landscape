@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import { Bricolage_Grotesque, Hanken_Grotesk, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import { JsonLd } from "@/components/JsonLd";
+import { HOME_DESCRIPTION, HOME_TITLE } from "@/lib/seo/config";
+import { siteJsonLd } from "@/lib/seo/jsonld";
+import { rootMetadata } from "@/lib/seo/metadata";
 
 const bricolage = Bricolage_Grotesque({
   variable: "--font-display",
@@ -20,11 +24,8 @@ const jetbrainsMono = JetBrains_Mono({
   weight: ["400", "500"],
 });
 
-export const metadata: Metadata = {
-  title: "G&M Landscape Services | Pittsburg, CA",
-  description:
-    "G&M Landscape Services: 30 years of family-owned landscape construction in Pittsburg, CA. Paver patios, retaining walls, water features, outdoor lighting, and more. No middlemen, free estimates.",
-};
+// Base URL, robots (noindex while it's an unpaid preview), share card: src/lib/seo (LAUNCH-STANDARD.md).
+export const metadata: Metadata = rootMetadata({ title: HOME_TITLE, description: HOME_DESCRIPTION });
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
@@ -46,6 +47,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 -->`,
           }}
         />
+        <JsonLd data={siteJsonLd()} />
         {children}
       </body>
     </html>
